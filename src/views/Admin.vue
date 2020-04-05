@@ -97,10 +97,23 @@
 // import Products from "@/sections/Products.vue";
 // import Login from "@/components/Login.vue";
 
+// eslint-disable-next-line no-unused-vars
+import {fb} from '../firebase'
+
 export default {
   name: 'admin',
   components: {
      
+  },
+  methods : {
+      logout () {
+          fb.auth().signOut()
+            .then(() => {
+                this.$router.replace('/');
+            }).catch((err) => {
+                console.log(err);
+            })
+      }
   }
 
 }

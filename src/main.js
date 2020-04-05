@@ -11,6 +11,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import 'popper.js'
 import './assets/app.scss'
+import { fb } from './firebase'
+
 
 
 
@@ -19,14 +21,19 @@ Vue.use(BootstrapVue)
     // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-Vue.config.productionTip = false
-
-
-
 //import navbar
 Vue.component('Navbar', require('./components/Navbar.vue').default)
 
-new Vue({
-    router,
-    render: h => h(App)
-}).$mount('#app')
+Vue.config.productionTip = false
+
+let app = ''
+
+// eslint-disable-next-line no-unused-vars
+fb.auth().onAuthStateChanged(function(user) {
+    if (!app) {
+        new Vue({
+            router,
+            render: h => h(App)
+        }).$mount('#app')
+    }
+});
