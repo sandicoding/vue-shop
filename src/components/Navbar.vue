@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="hello">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         
             <a class="navbar-brand" href="#">Vue Shop</a>
@@ -18,17 +18,27 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                 <a  v-b-modal.modal-1 class="btn btn-outline-success my-2 my-sm-0">Get Start</a>
+                 <a class="btn btn-outline-info border-0 mx-2 my-2 my-sm-0" data-toggle="modal" data-target="#miniCart">
+                    <i class="fas fa-cart-plus"></i>
+                  </a>
                 </form>
             </div>
+
+            
 
     </nav>
   </div>
 </template>
 
 <script>
+
+
 export default {
   name: 'Navbar',
+  components : {
+    
+  },
 }
 </script>
 

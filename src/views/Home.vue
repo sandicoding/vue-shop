@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar/>
+    <Navbar></Navbar>
     <Hero/>
     <Products/>
      <div class="container h-100">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <Login/>
+      <Login></Login>
 
   </div>
 </template>
