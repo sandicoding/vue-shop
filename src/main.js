@@ -7,6 +7,7 @@ global.$ = jQuery
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueFirestore from 'vue-firestore';
 
 
 import 'popper.js'
@@ -14,12 +15,25 @@ import './assets/app.scss'
 import { fb } from './firebase'
 
 
-
-
+//vue firestrore
+Vue.use(VueFirestore);
 // Install BootstrapVue
 Vue.use(BootstrapVue)
     // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss'
+window.Swal = Swal;
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
+window.Toast = Toast;
 
 //import navbar
 Vue.component('Navbar', require('./components/Navbar.vue').default)
