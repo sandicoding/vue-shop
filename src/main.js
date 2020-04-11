@@ -16,7 +16,10 @@ import { fb } from './firebase'
 
 
 //vue firestrore
-Vue.use(VueFirestore);
+Vue.use(VueFirestore, {
+    key: 'id',         // the name of the property. Default is '.key'.
+    enumerable: true  //  whether it is enumerable or not. Default is true.
+});
 // Install BootstrapVue
 Vue.use(BootstrapVue)
     // Optionally install the BootstrapVue icon components plugin

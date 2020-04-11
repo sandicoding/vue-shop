@@ -49,7 +49,7 @@
               <td>{{product.name}}</td>
               <td>{{product.price}}</td>
               <td class="text-right">
-                <button class="btn btn-primary mr-2">Edit</button>
+                <button class="btn btn-primary mr-2" @click="editProduct(product)">Edit</button>
                 <button class="btn btn-danger " @click="deleteProduct(product)">Delete</button>
               </td>    
             </tr>
@@ -57,6 +57,18 @@
         </table>
       </div>
    </div>
+   
+    <b-modal id="modal-1">
+      <div class="form-group">
+        <label for="product-name">Product Name</label>
+        <input type="text" class="form-control" v-model="product.name" id="product-name" placeholder="Product Name">
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" v-model="product.price" id="price" placeholder="Price">
+      </div>
+      <Button id="savedata" @click="updateProduct()" class="btn btn-primary">Save Data</Button>
+    </b-modal>
   </div>
 </template>
 
@@ -86,6 +98,30 @@ export default {
     }
   },
   methods : {
+
+    updateProduct() {
+         this.$firestore.products.doc(this.product.id).update(this.product);
+          // eslint-disable-next-line no-undef
+          Toast.fire({
+            type: 'success',
+            title: 'Updated  successfully'
+          })
+           this.$root.$emit('bv::hide::modal', 'modal-1', '#savedata')
+           //kosongkan input
+          this.product.name = null;
+          this.product.price =null;
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    editProduct(product)
+    {
+      
+      this.product = product;
+      console.log(this.product.id)
+      this.$root.$emit('bv::show::modal', 'modal-1', '#btnShow')
+      
+      
+    },
     // eslint-disable-next-line no-unused-vars
     deleteProduct(product) {
       
