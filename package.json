@@ -15,7 +15,7 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
     "sweetalert2": "^9.10.9",
-    "vue": "^2.6.11",
+    "vue": "^3.0.0",
     "vue-firestore": "^0.3.30",
     "vue-router": "^3.1.5",
     "vue-sweetalert": "^0.1.18",
